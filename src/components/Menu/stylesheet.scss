@@ -1,0 +1,126 @@
+@import "../../common/constants";
+
+.Menu {
+  position: absolute;
+  z-index: 99999;
+  top: 0;
+  bottom: $taskbar-height;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  overflow: hidden;
+  animation: $anim-duration opening;
+
+  @keyframes opening {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  &.closing {
+    animation: $anim-duration forwards closing;
+
+    @keyframes closing {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+  }
+
+  .overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 24rem;
+    height: 60vh;
+    background-color: $color-dark;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow: 0 0 48px rgba(black, .4);
+    pointer-events: auto;
+    border-radius: 5px;
+    margin: 1rem;
+    overflow: hidden;
+
+    .list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      overflow-y: auto;
+
+      .group {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        .header {
+          color: white;
+          padding: .4rem 1.2rem;
+          margin-top: 1.2rem;
+          font-size: $font-size-small;
+        }
+
+        .item {
+          @include hoverable;
+          display: flex;
+          align-items: center;
+          padding: .4rem 1.2rem;
+
+          &.indented {
+            padding-left: 3.8rem;
+          }
+
+          .icon {
+            @include icon(2.2rem);
+            margin-right: .4rem;
+          }
+
+          .name {
+            flex: 1;
+            font-size: $font-size-small;
+            color: $color-light;
+          }
+
+          .total {
+            font-size: $font-size-small;
+            color: rgba($color-light, .2);
+          }
+        }
+      }
+    }
+
+    .search-container {
+      border-top: 1px solid rgba($color-light, .1);
+      display: flex;
+      height: 4rem;
+      align-items: stretch;
+
+      .search {
+        flex: 1;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+        color: white;
+        background: none;
+        padding: 0 1.2rem;
+      }
+    }
+  }
+}
+
+.mobile .Menu {
+  .overlay {
+    width: auto;
+    height: auto;
+    top: 0;
+    right: 0;
+  }
+}
