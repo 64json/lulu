@@ -1,7 +1,7 @@
-import {isExternal, match, namize} from 'common/utils';
-import {Dir, PreviewFile, RootDir} from 'beans';
+import {isExternal, match, namize} from '../common/utils';
+import {Dir, PreviewFile, RootDir} from '.';
 
-class Child {
+export class Child {
   constructor(key, parent) {
     this.key = key;
     this.parent = parent;
@@ -38,11 +38,11 @@ class Child {
     return null;
   }
 
-  open(history) {
+  open(navigate) {
     if (isExternal(this.url)) {
       window.open(this.url);
     } else {
-      history.push(this.url);
+      navigate(this.url);
     }
   }
 
@@ -61,5 +61,3 @@ class Child {
     return matched ? [this] : [];
   }
 }
-
-export default Child;

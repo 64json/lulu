@@ -1,6 +1,4 @@
-import {Child} from 'beans';
+import {Child} from '.';
 
-class File extends Child {
+export class File extends Child {
 }
-
-export default File;

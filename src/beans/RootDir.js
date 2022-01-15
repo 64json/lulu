@@ -1,8 +1,8 @@
-import {AppFile, DesktopDir, SymlinkFile, SystemDir} from 'beans';
-import * as wallpaperMap from 'images/wallpapers';
-import {FinderWindow, PaypalWindow,} from 'windows';
+import {AppFile, DesktopDir, SymlinkFile, SystemDir} from '.';
+import * as wallpaperMap from '../images/wallpapers';
+import {FinderWindow, PaypalWindow,} from '../windows';
 
-class RootDir extends SystemDir {
+export class RootDir extends SystemDir {
   constructor(children) {
     super(children, 'root', null);
   }
@@ -61,5 +61,3 @@ class RootDir extends SystemDir {
     return this.rootDir;
   }
 }
-
-export default RootDir;

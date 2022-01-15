@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link as PathLink} from 'react-router-dom';
-import {classes, isExternal} from 'common/utils';
+import {classes, isExternal} from '../../common/utils';
 
-function Link({className, url, onMouseDown, onClick, external, children, ...props}, ref) {
+export const Link = React.forwardRef(({className, url, onMouseDown, onClick, external, children, ...props}, ref) => {
   const handleMouseDown = e => {
     e.stopPropagation();
     e.preventDefault();
@@ -31,6 +31,4 @@ function Link({className, url, onMouseDown, onClick, external, children, ...prop
       {children}
     </PathLink>
   );
-}
-
-export default React.forwardRef(Link);
+});

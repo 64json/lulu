@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-import {Desktop, Taskbar} from 'components';
-import {FileSystemContext, ResponsiveContext} from 'contexts';
-import {RootDir} from 'beans';
-import Menu from '../Menu';
+import {HashRouter as Router} from 'react-router-dom';
+import {Desktop, Menu, Taskbar} from '..';
+import {FileSystemContext, ResponsiveContext} from '../../contexts';
+import {RootDir} from '../../beans';
 import './stylesheet.scss';
 
 const isMobile = () => {
@@ -11,7 +10,7 @@ const isMobile = () => {
   return clientWidth <= 512;
 };
 
-function Screen() {
+export function Screen() {
   const [mobile, setMobile] = useState(isMobile());
   const [rootDirRefresh, setRootDirRefresh] = useState(0);
 
@@ -33,21 +32,15 @@ function Screen() {
 
   return (
     <Router>
-      <Switch>
-        <Route>
-          <ResponsiveContext.Provider value={mobile}>
-            <FileSystemContext.Provider value={[RootDir.instance, refreshRootDir]}>
-              <div className="Screen">
-                <Desktop/>
-                <Menu/>
-                <Taskbar/>
-              </div>
-            </FileSystemContext.Provider>
-          </ResponsiveContext.Provider>
-        </Route>
-      </Switch>
+      <ResponsiveContext.Provider value={mobile}>
+        <FileSystemContext.Provider value={[RootDir.instance, refreshRootDir]}>
+          <div className="Screen">
+            <Desktop/>
+            <Menu/>
+            <Taskbar/>
+          </div>
+        </FileSystemContext.Provider>
+      </ResponsiveContext.Provider>
     </Router>
   );
 }
-
-export default Screen;

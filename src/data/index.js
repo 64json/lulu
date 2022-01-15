@@ -1,1 +1,1 @@
-export {default as donations} from './donations';
+export * from './donations';

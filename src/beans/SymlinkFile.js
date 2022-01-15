@@ -1,6 +1,6 @@
-import {File} from 'beans';
+import {File} from '.';
 
-class SymlinkFile extends File {
+export class SymlinkFile extends File {
   constructor(target, key, parent) {
     super(key, parent);
     this.target = target;
@@ -22,5 +22,3 @@ class SymlinkFile extends File {
     return [];
   }
 }
-
-export default SymlinkFile;

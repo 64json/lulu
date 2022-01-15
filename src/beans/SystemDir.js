@@ -1,6 +1,4 @@
-import {Dir} from 'beans';
+import {Dir} from '.';
 
-class SystemDir extends Dir {
+export class SystemDir extends Dir {
 }
-
-export default SystemDir;

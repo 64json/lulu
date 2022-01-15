@@ -1,12 +1,12 @@
 import React from 'react';
 
-import {Icon, Window} from 'components';
-import {getUrlKeys} from 'common/utils';
-import {donations} from 'data';
+import {Icon, Window} from '../../components';
+import {getUrlKeys} from '../../common/utils';
+import {donations} from '../../data';
 
 import './stylesheet.scss';
 
-function PaypalWindow(props) {
+export function PaypalWindow(props) {
   const {app} = props;
   const {url} = app;
   const [, status] = getUrlKeys(url);
@@ -47,5 +47,3 @@ function PaypalWindow(props) {
     </Window>
   );
 }
-
-export default PaypalWindow;

@@ -1,6 +1,6 @@
-import * as donationMap from 'images/donations';
+import * as donationMap from '../images/donations';
 
-export default [{
+export const donations = [{
   name: 'Strawberry Acai Venti',
   image: donationMap.starbucks,
   price: 4.29,

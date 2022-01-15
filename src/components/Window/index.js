@@ -1,34 +1,34 @@
 import React, {useContext, useEffect, useState} from 'react';
 import './stylesheet.scss';
-import {classes} from 'common/utils';
-import {useHistory} from 'react-router-dom';
-import {Icon, Link} from 'components';
-import {ResponsiveContext} from 'contexts';
+import {classes} from '../../common/utils';
+import {useNavigate} from 'react-router-dom';
+import {Icon, Link} from '..';
+import {ResponsiveContext} from '../../contexts';
 
-function Window({
-                  className,
-                  iconProps,
-                  title,
-                  defaultWidth,
-                  defaultHeight,
-                  tabs,
-                  noToolbar,
-                  children,
-                  onKeyDown,
-                  onKeyPress,
-                  onUpdate,
-                  app,
-                  style,
-                  toolbarStyle,
-                  contentStyle,
-                }) {
+export function Window({
+                         className,
+                         iconProps,
+                         title,
+                         defaultWidth,
+                         defaultHeight,
+                         tabs,
+                         noToolbar,
+                         children,
+                         onKeyDown,
+                         onKeyPress,
+                         onUpdate,
+                         app,
+                         style,
+                         toolbarStyle,
+                         contentStyle,
+                       }) {
   const {
     name, iconProps: appIconProps, url, closing, focused, defaultLeft, defaultTop, zIndex,
   } = app;
 
   const mobile = useContext(ResponsiveContext);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const [[left, top, width, height], setCoords] = useState([defaultLeft, defaultTop, defaultWidth, defaultHeight]);
   const [maximized, setMaximized] = useState(false);
@@ -66,7 +66,7 @@ function Window({
       style={{...(style || {}), zIndex, left, top, width, height}}
       onMouseDown={e => {
         e.stopPropagation();
-        if (!focused) history.push(url);
+        if (!focused) navigate(url);
       }}>
       <div className="toolbar" onMouseDown={mobile ? undefined : e => {
         if (e.button !== 0) return;
@@ -189,5 +189,3 @@ function Window({
     </div>
   );
 }
-
-export default Window;

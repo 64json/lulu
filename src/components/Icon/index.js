@@ -1,10 +1,10 @@
 import React from 'react';
-import {classes} from 'common/utils';
-import * as iconMap from 'images/icons';
-import * as badgeMap from 'images/badges';
+import {classes} from '../../common/utils';
+import * as iconMap from '../../images/icons';
+import * as badgeMap from '../../images/badges';
 import './stylesheet.scss';
 
-function Icon({className, iconKey, iconUrl, badgeKey}) {
+export function Icon({className, iconKey, iconUrl, badgeKey}) {
   return (
     <div className={classes('Icon', className)}
          style={{backgroundImage: `url(${iconUrl || iconMap[iconKey]})`}}>
@@ -16,5 +16,3 @@ function Icon({className, iconKey, iconUrl, badgeKey}) {
     </div>
   );
 }
-
-export default Icon;

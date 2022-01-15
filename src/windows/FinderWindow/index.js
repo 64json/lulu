@@ -1,19 +1,19 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, {useContext, useEffect, useRef} from 'react';
 import './stylesheet.scss';
-import { classes, getUrlKeys, namize } from 'common/utils';
-import { Icon, Link, Window } from 'components';
-import { useHistory } from 'react-router-dom';
-import { FileSystemContext, ResponsiveContext } from 'contexts';
-import { Dir, PreviewFile } from 'beans';
+import {classes, getUrlKeys, namize} from '../../common/utils';
+import {Icon, Link, Window} from '../../components';
+import {useNavigate} from 'react-router-dom';
+import {FileSystemContext, ResponsiveContext} from '../../contexts';
+import {Dir, PreviewFile} from '../../beans';
 import ReactMarkdown from 'react-markdown';
 
-function FinderWindow(props) {
-  const { app } = props;
+export function FinderWindow(props) {
+  const {app} = props;
 
   const mobile = useContext(ResponsiveContext);
   const [rootDir] = useContext(FileSystemContext);
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const pathKeys = getUrlKeys(app.url);
   if (pathKeys[0] === app.key) {
@@ -35,10 +35,10 @@ function FinderWindow(props) {
 
   useEffect(() => {
     if (dirRef.current) {
-      dirRef.current.scrollIntoView({ block: 'nearest' });
+      dirRef.current.scrollIntoView({block: 'nearest'});
     }
     if (panelRef.current) {
-      panelRef.current.scrollIntoView({ inline: 'end' });
+      panelRef.current.scrollIntoView({inline: 'end'});
     }
   }, [app.url]);
 
@@ -56,14 +56,14 @@ function FinderWindow(props) {
               switch (e.keyCode) {
                 case 13: {
                   if (activeChild.url !== activeChild.finderUrl) {
-                    activeChild.open(history);
+                    activeChild.open(navigate);
                   }
                   break;
                 }
                 case 37: {
-                  const { parent } = activeChild;
+                  const {parent} = activeChild;
                   if (parent) {
-                    history.push(parent.finderUrl);
+                    navigate(parent.finderUrl);
                   }
                   break;
                 }
@@ -71,7 +71,7 @@ function FinderWindow(props) {
                   if (activeChild instanceof Dir) {
                     const [child] = activeChild.children;
                     if (child) {
-                      history.push(child.finderUrl);
+                      navigate(child.finderUrl);
                     }
                   }
                   break;
@@ -82,7 +82,7 @@ function FinderWindow(props) {
                     const siblings = parentDir.children;
                     const sibling = siblings[siblings.indexOf(activeChild) - 1];
                     if (sibling) {
-                      history.push(sibling.finderUrl);
+                      navigate(sibling.finderUrl);
                     }
                   }
                   break;
@@ -93,7 +93,7 @@ function FinderWindow(props) {
                     const siblings = parentDir.children;
                     const sibling = siblings[siblings.indexOf(activeChild) + 1];
                     if (sibling) {
-                      history.push(sibling.finderUrl);
+                      navigate(sibling.finderUrl);
                     }
                   }
                   break;
@@ -143,7 +143,7 @@ function FinderWindow(props) {
                         <div className="value">
                           <ReactMarkdown source={value} escapeHtml={false}
                                          renderers={{
-                                           link: ({ href, children }) => (
+                                           link: ({href, children}) => (
                                              <Link url={href}>
                                                {children}
                                              </Link>
@@ -163,5 +163,3 @@ function FinderWindow(props) {
     </Window>
   );
 }
-
-export default FinderWindow;

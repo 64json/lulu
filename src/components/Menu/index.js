@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useLocation} from 'react-router-dom';
-import {FileSystemContext} from 'contexts';
-import {Dir, LinkFile} from 'beans';
+import {FileSystemContext} from '../../contexts';
+import {Dir, LinkFile} from '../../beans';
 import {Icon, Link} from '../index';
-import {classes} from 'common/utils';
+import {classes} from '../../common/utils';
 import './stylesheet.scss';
 
-function Menu() {
+export function Menu() {
   const [rootDir] = useContext(FileSystemContext);
   const [keyword, setKeyword] = useState('');
   const [opened, setOpened] = useState(false);
@@ -81,5 +81,3 @@ function Menu() {
     </div>
   );
 }
-
-export default Menu;

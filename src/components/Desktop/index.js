@@ -1,18 +1,18 @@
 import React, {useContext, useEffect} from 'react';
-import {useHistory, useLocation} from 'react-router-dom';
-import {getAppKey} from 'common/utils';
-import {FileSystemContext, ResponsiveContext} from 'contexts';
-import {Icon, Link} from 'components';
-import * as wallpaperMap from 'images/wallpapers';
+import {useLocation, useNavigate} from 'react-router-dom';
+import {getAppKey} from '../../common/utils';
+import {FileSystemContext, ResponsiveContext} from '../../contexts';
+import {Icon, Link} from '..';
+import * as wallpaperMap from '../../images/wallpapers';
 import './stylesheet.scss';
 
-function Desktop() {
+export function Desktop() {
   const mobile = useContext(ResponsiveContext);
   const [rootDir, refreshRootDir] = useContext(FileSystemContext);
   const desktopDir = rootDir.getDesktopDir();
   const apps = rootDir.getApps();
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const currentUrl = location.pathname;
 
@@ -49,7 +49,7 @@ function Desktop() {
   return (
     <div className="Desktop"
          onMouseDown={() => {
-           if (currentUrl !== '/') history.push('/');
+           if (currentUrl !== '/') navigate('/');
          }}>
       <div className="wallpaper"
            style={desktopDir && {backgroundImage: `url(${wallpaperMap[desktopDir.wallpaperKey]})`}}/>
@@ -87,5 +87,3 @@ function Desktop() {
     </div>
   );
 }
-
-export default Desktop;

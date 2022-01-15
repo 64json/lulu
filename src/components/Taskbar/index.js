@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {Icon, Link} from 'components';
-import {FileSystemContext, ResponsiveContext} from 'contexts';
+import {Icon, Link} from '..';
+import {FileSystemContext, ResponsiveContext} from '../../contexts';
 import './stylesheet.scss';
 import {useLocation} from 'react-router-dom';
 import {classes} from '../../common/utils';
@@ -16,7 +16,7 @@ const getClock = () => {
   return `${hh}:${mm} ${A}`;
 };
 
-function Taskbar() {
+export function Taskbar() {
   const mobile = useContext(ResponsiveContext);
   const [rootDir] = useContext(FileSystemContext);
   const apps = rootDir.getApps();
@@ -66,5 +66,3 @@ function Taskbar() {
     </div>
   );
 }
-
-export default Taskbar;

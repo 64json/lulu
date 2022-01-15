@@ -1,6 +1,6 @@
-import {File} from 'beans';
+import {File} from '.';
 
-class PreviewFile extends File {
+export class PreviewFile extends File {
   constructor(content, key, parent) {
     super(key, parent);
     this.content = content;
@@ -18,5 +18,3 @@ class PreviewFile extends File {
     return [...super.searchables, ...Object.values(this.content)];
   }
 }
-
-export default PreviewFile;

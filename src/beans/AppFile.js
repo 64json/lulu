@@ -1,6 +1,6 @@
-import {File} from 'beans';
+import {File} from '.';
 
-class AppFile extends File {
+export class AppFile extends File {
   static count = 0;
 
   constructor(WindowComponent, {pinned = true, defaultUrl} = {}, key, parent) {
@@ -27,5 +27,3 @@ class AppFile extends File {
     return {iconKey: this.key};
   }
 }
-
-export default AppFile;

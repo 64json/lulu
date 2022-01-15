@@ -1,6 +1,6 @@
-import {Child, PreviewFile} from 'beans';
+import {Child, PreviewFile} from '.';
 
-class Dir extends Child {
+export class Dir extends Child {
   constructor(children, key, parent) {
     super(key, parent);
     if (Array.isArray(children)) {
@@ -38,5 +38,3 @@ class Dir extends Child {
     return results;
   }
 }
-
-export default Dir;

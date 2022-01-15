@@ -1,6 +1,7 @@
-export {default as Desktop} from './Desktop';
-export {default as Icon} from './Icon';
-export {default as Link} from './Link';
-export {default as Screen} from './Screen';
-export {default as Taskbar} from './Taskbar';
-export {default as Window} from './Window';
+export * from './Desktop';
+export * from './Icon';
+export * from './Link';
+export * from './Menu';
+export * from './Screen';
+export * from './Taskbar';
+export * from './Window';

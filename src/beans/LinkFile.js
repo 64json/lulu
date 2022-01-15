@@ -1,6 +1,6 @@
-import {File} from 'beans';
+import {File} from '.';
 
-class LinkFile extends File {
+export class LinkFile extends File {
   constructor(href, key, parent) {
     super(key, parent);
     this.href = href;
@@ -14,5 +14,3 @@ class LinkFile extends File {
     return {iconKey: this.key};
   }
 }
-
-export default LinkFile;
