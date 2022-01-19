@@ -1,9 +1,9 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {getAppKey} from '../../common/utils';
 import {FileSystemContext, ResponsiveContext} from '../../contexts';
 import {Icon, Link} from '..';
-import * as wallpaperMap from '../../images/wallpapers';
+import {wallpapers} from '../../images/wallpapers';
 import './stylesheet.scss';
 
 export function Desktop() {
@@ -15,6 +15,20 @@ export function Desktop() {
   const navigate = useNavigate();
   const location = useLocation();
   const currentUrl = location.pathname;
+
+  const [wallpaperIndex, setWallpaperIndex] = useState(0);
+  const wallpaper = wallpapers[wallpaperIndex];
+  const previousWallpaper = wallpapers[(wallpaperIndex + wallpapers.length - 1) % wallpapers.length];
+
+  useEffect(() => {
+    const handle = window.setTimeout(() => {
+      setWallpaperIndex((wallpaperIndex + 1) % wallpapers.length);
+    }, 10000);
+
+    return () => {
+      window.clearTimeout(handle);
+    };
+  }, [wallpaperIndex]);
 
   useEffect(() => {
     apps && apps.forEach(app => {
@@ -51,15 +65,10 @@ export function Desktop() {
          onMouseDown={() => {
            if (currentUrl !== '/') navigate('/');
          }}>
-      <div className="wallpaper"
-           style={desktopDir && {backgroundImage: `url(${wallpaperMap[desktopDir.wallpaperKey]})`}}/>
-      {
-        !mobile &&
-        <div className="location">
-          <div className="pinpoint"/>
-          {desktopDir.wallpaperKey.replace(/__/g, ',_').split('_').map(v => v.charAt(0).toUpperCase() + v.slice(1)).join(' ')}
-        </div>
-      }
+      <div className="wallpaper" key={previousWallpaper}
+           style={{backgroundImage: `url(${previousWallpaper})`}}/>
+      <div className="wallpaper fade-in" key={wallpaper}
+           style={{backgroundImage: `url(${wallpaper})`}}/>
       <div className="app-container">
         {
           desktopDir && desktopDir.children.map(child => (

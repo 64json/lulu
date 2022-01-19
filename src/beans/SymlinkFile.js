@@ -1,17 +1,13 @@
 import {File} from '.';
 
 export class SymlinkFile extends File {
-  constructor(target, key, parent) {
-    super(key, parent);
+  constructor(target, name, parent) {
+    super(name, parent);
     this.target = target;
   }
 
   get url() {
     return this.target.url;
-  }
-
-  get name() {
-    return this.target.name;
   }
 
   get iconProps() {

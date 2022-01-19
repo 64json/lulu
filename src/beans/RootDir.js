@@ -1,13 +1,14 @@
 import {AppFile, DesktopDir, SymlinkFile, SystemDir} from '.';
-import * as wallpaperMap from '../images/wallpapers';
-import {FinderWindow, PaypalWindow,} from '../windows';
+import {FinderWindow, GatherlyWindow,} from '../windows';
+import {MoolahWindow} from "../windows/MoolahWindow";
+import {NcrWindow} from "../windows/NcrWindow";
 
 export class RootDir extends SystemDir {
   constructor(children) {
     super(children, 'root', null);
   }
 
-  getUserDir(user = 'jason') {
+  getUserDir(user = 'lulu-and-jinseo') {
     return this.getChild('users', user);
   }
 
@@ -39,21 +40,25 @@ export class RootDir extends SystemDir {
       return this.rootDir;
     }
 
-    const finder = new AppFile(FinderWindow, {defaultUrl: '/finder/users/jason/desktop'});
-    const paypal = new AppFile(PaypalWindow);
-
-    const wallpaperKeys = Object.keys(wallpaperMap);
+    const finder = new AppFile(FinderWindow, {defaultUrl: '/finder/users/lulu-and-jinseo/desktop'});
+    const gatherly = new AppFile(GatherlyWindow);
+    const moolah = new AppFile(MoolahWindow);
+    const ncr = new AppFile(NcrWindow);
 
     this.rootDir = new RootDir({
       users: new SystemDir({
-        jason: new SystemDir({
+        'Lulu and Jinseo': new SystemDir({
           apps: new SystemDir({
-            finder,
-            paypal,
+            Finder: finder,
+            Gatherly: gatherly,
+            Moolah: moolah,
+            NCR: ncr,
           }),
           desktop: new DesktopDir({
-            paypal: new SymlinkFile(paypal),
-          }, wallpaperKeys[Math.random() * wallpaperKeys.length | 0]),
+            Gatherly: new SymlinkFile(gatherly),
+            Moolah: new SymlinkFile(moolah),
+            NCR: new SymlinkFile(ncr),
+          }),
         }),
       }),
     });

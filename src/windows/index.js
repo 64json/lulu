@@ -1,2 +1,2 @@
 export * from './FinderWindow';
-export * from './PaypalWindow';
+export * from './GatherlyWindow';

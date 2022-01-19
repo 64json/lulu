@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useRef} from 'react';
-import './stylesheet.scss';
+import {useNavigate} from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import {classes, getUrlKeys, namize} from '../../common/utils';
 import {Icon, Link, Window} from '../../components';
-import {useNavigate} from 'react-router-dom';
 import {FileSystemContext, ResponsiveContext} from '../../contexts';
 import {Dir, PreviewFile} from '../../beans';
-import ReactMarkdown from 'react-markdown';
+import './stylesheet.scss';
 
 export function FinderWindow(props) {
   const {app} = props;
@@ -19,7 +19,7 @@ export function FinderWindow(props) {
   if (pathKeys[0] === app.key) {
     pathKeys.shift();
   } else {
-    pathKeys.unshift('users', 'jason', 'desktop');
+    pathKeys.unshift('users', 'lulu-and-jinseo', 'desktop');
   }
   let parentDir = rootDir;
   const activeChildren = pathKeys.map(dirKey => {

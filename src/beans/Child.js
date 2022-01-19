@@ -1,10 +1,14 @@
-import {isExternal, match, namize} from '../common/utils';
+import {isExternal, match} from '../common/utils';
 import {Dir, PreviewFile, RootDir} from '.';
 
 export class Child {
-  constructor(key, parent) {
-    this.key = key;
+  constructor(name, parent) {
+    this.name = name;
     this.parent = parent;
+  }
+
+  get key() {
+    return this.name.toLowerCase().replace(/\W/g, '-');
   }
 
   get pathKeys() {
@@ -17,7 +21,7 @@ export class Child {
 
   get finderUrl() {
     const {pathKeys} = this;
-    if (['users', 'jason', 'desktop'].every((v, i) => v === pathKeys[i]) && pathKeys.length > 3) {
+    if (['users', 'lulu-and-jinseo', 'desktop'].every((v, i) => v === pathKeys[i]) && pathKeys.length > 3) {
       const child = RootDir.instance.getChild(...pathKeys);
       if (child instanceof Dir || child instanceof PreviewFile) {
         return `/${pathKeys.slice(3).join('/')}`;
@@ -28,10 +32,6 @@ export class Child {
 
   get url() {
     return this.finderUrl;
-  }
-
-  get name() {
-    return namize(this.key);
   }
 
   get iconProps() {

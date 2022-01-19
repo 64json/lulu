@@ -1,16 +1,16 @@
 import {Child, PreviewFile} from '.';
 
 export class Dir extends Child {
-  constructor(children, key, parent) {
-    super(key, parent);
+  constructor(children, name, parent) {
+    super(name, parent);
     if (Array.isArray(children)) {
       this.children = children.map(({key, ...content}) => {
         return new PreviewFile(content, key, this);
       });
     } else {
-      this.children = Object.keys(children).map(key => {
-        const child = children[key];
-        child.key = key;
+      this.children = Object.keys(children).map(name => {
+        const child = children[name];
+        child.name = name;
         child.parent = this;
         return child;
       });
@@ -27,7 +27,7 @@ export class Dir extends Child {
   };
 
   get iconProps() {
-    return {iconKey: 'finder', badgeKey: this.key};
+    return {iconKey: 'finder'};
   }
 
   search(keyword) {
