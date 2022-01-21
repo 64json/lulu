@@ -1,7 +1,5 @@
-import {AppFile, DesktopDir, SymlinkFile, SystemDir} from '.';
-import {FinderWindow, GatherlyWindow,} from '../windows';
-import {MoolahWindow} from "../windows/MoolahWindow";
-import {NcrWindow} from "../windows/NcrWindow";
+import {AppFile, DesktopDir, LinkFile, SymlinkFile, SystemDir} from '.';
+import {AtlantaWindow, FinderWindow, GatherlyWindow, MoolahWindow, NcrWindow, NycWindow} from '../windows';
 
 export class RootDir extends SystemDir {
   constructor(children) {
@@ -44,6 +42,8 @@ export class RootDir extends SystemDir {
     const gatherly = new AppFile(GatherlyWindow);
     const moolah = new AppFile(MoolahWindow);
     const ncr = new AppFile(NcrWindow);
+    const atlanta = new AppFile(AtlantaWindow);
+    const nyc = new AppFile(NycWindow);
 
     this.rootDir = new RootDir({
       users: new SystemDir({
@@ -53,11 +53,16 @@ export class RootDir extends SystemDir {
             Gatherly: gatherly,
             Moolah: moolah,
             NCR: ncr,
+            Atlanta: atlanta,
+            NYC: nyc,
           }),
           desktop: new DesktopDir({
+            Spotify: new LinkFile('https://open.spotify.com/playlist/37i9dQZF1EJDpt91mXLGX6'),
             Gatherly: new SymlinkFile(gatherly),
             Moolah: new SymlinkFile(moolah),
             NCR: new SymlinkFile(ncr),
+            Atlanta: new SymlinkFile(atlanta),
+            NYC: new SymlinkFile(nyc),
           }),
         }),
       }),

@@ -1,8 +1,8 @@
 import {File} from '.';
 
 export class LinkFile extends File {
-  constructor(href, key, parent) {
-    super(key, parent);
+  constructor(href, name, parent) {
+    super(name, parent);
     this.href = href;
   }
 

@@ -4,6 +4,7 @@ import {FileSystemContext, ResponsiveContext} from '../../contexts';
 import './stylesheet.scss';
 import {useLocation} from 'react-router-dom';
 import {classes} from '../../common/utils';
+import lulu_and_jinseo from '../../images/lulu-and-jinseo.png';
 
 const getClock = () => {
   const two = (x) => x < 10 ? `0${x}` : x;
@@ -42,7 +43,7 @@ export function Taskbar() {
       <Link className="label label-profile" url={currentUrl === '/menu' ? '' : '/menu'}>
         {
           !mobile &&
-          <div className="avatar" style={{backgroundImage: `url(/* TODO */)`}}/>
+          <div className="avatar" style={{backgroundImage: `url(${lulu_and_jinseo})`}}/>
         }
         <div className="name">Lulu and Jinseo</div>
       </Link>

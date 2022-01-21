@@ -22,10 +22,9 @@
       @include hoverable;
 
       .avatar {
-        height: 2rem;
-        width: 2rem;
+        @include icon(2rem);
+        filter: none;
         margin-right: .5rem;
-        border-radius: .2rem;
         background-size: cover;
         background-position: center;
       }

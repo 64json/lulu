@@ -12,6 +12,7 @@ $theme-color: $color-dark;
   height: $size;
   width: $size;
   filter: drop-shadow(0 0 $size / 32 rgba(black, .5));
+  border-radius: $size / 8;
 }
 
 @mixin hoverable() {
