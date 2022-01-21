@@ -1,25 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.1e06f74b.css",
-    "main.js": "/static/js/main.7144e1a3.js",
+    "main.css": "/static/css/main.9ac403e4.css",
+    "main.js": "/static/js/main.15572f45.js",
     "static/media/IMG_3496.jpg": "/static/media/IMG_3496.b227a45e3c9f6099d2ea.jpg",
     "static/media/IMG_6593.jpg": "/static/media/IMG_6593.2aeae387bd36931c62e3.jpg",
     "static/media/IMG_4952.jpg": "/static/media/IMG_4952.65af97bbba3ade8cc19d.jpg",
+    "static/media/atlanta-bg.jpeg": "/static/media/atlanta-bg.a77446136b86b34a67e1.jpeg",
     "static/media/9_1 Gatherly.png": "/static/media/9_1 Gatherly.1fd4ef1441c706ca805b.png",
     "static/media/gatherly-photobooth-0360 (1).png": "/static/media/gatherly-photobooth-0360 (1).6c0880adca3b334e2bb9.png",
+    "static/media/lulu-and-jinseo.png": "/static/media/lulu-and-jinseo.b286a77780ad68e02fa0.png",
+    "static/media/nyc-bg.jpeg": "/static/media/nyc-bg.f6f16685d6ab90be89ac.jpeg",
     "static/media/moolah.png": "/static/media/moolah.e722cc8c5a393a23d2a3.png",
     "static/media/gatherly.png": "/static/media/gatherly.acc9ce8ce34c9619afcd.png",
     "static/media/IMG_4386.jpg": "/static/media/IMG_4386.30086cc14b5f2b5b746c.jpg",
+    "static/media/atlanta.png": "/static/media/atlanta.92952a5164530ea1b1a8.png",
+    "static/media/nyc.png": "/static/media/nyc.a5fd6ea461ac87d473ae.png",
     "static/media/ncr.png": "/static/media/ncr.a13962178a58a5b3e70d.png",
     "static/media/finder.png": "/static/media/finder.dc991633b64a98c78616.png",
+    "static/media/spotify.png": "/static/media/spotify.05c9fa3e1e406f951d43.png",
     "static/media/link-external.png": "/static/media/link-external.5dac6994755d1651806f.png",
     "static/media/pinpoint.png": "/static/media/pinpoint.7f84e11bb8f83bcfd9d2.png",
     "index.html": "/index.html",
-    "main.1e06f74b.css.map": "/static/css/main.1e06f74b.css.map",
-    "main.7144e1a3.js.map": "/static/js/main.7144e1a3.js.map"
+    "main.9ac403e4.css.map": "/static/css/main.9ac403e4.css.map",
+    "main.15572f45.js.map": "/static/js/main.15572f45.js.map"
   },
   "entrypoints": [
-    "static/css/main.1e06f74b.css",
-    "static/js/main.7144e1a3.js"
+    "static/css/main.9ac403e4.css",
+    "static/js/main.15572f45.js"
   ]
 }
