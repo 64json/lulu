@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.eb0c708d.css",
-    "main.js": "/static/js/main.da37662b.js",
+    "main.css": "/static/css/main.f6a263a1.css",
+    "main.js": "/static/js/main.c948555d.js",
     "static/media/IMG_3496.jpg": "/static/media/IMG_3496.b227a45e3c9f6099d2ea.jpg",
     "static/media/IMG_6593.jpg": "/static/media/IMG_6593.2aeae387bd36931c62e3.jpg",
     "static/media/tokyo-bg.png": "/static/media/tokyo-bg.9418bc2c527b2baf51ba.png",
@@ -18,16 +18,17 @@
     "static/media/nyc.png": "/static/media/nyc.a5fd6ea461ac87d473ae.png",
     "static/media/tokyo.png": "/static/media/tokyo.8b968890ce6d1f77a436.png",
     "static/media/ncr.png": "/static/media/ncr.a13962178a58a5b3e70d.png",
+    "static/media/terminal.png": "/static/media/terminal.8068514835c5078c3624.png",
     "static/media/finder.png": "/static/media/finder.dc991633b64a98c78616.png",
     "static/media/spotify.png": "/static/media/spotify.05c9fa3e1e406f951d43.png",
     "static/media/link-external.png": "/static/media/link-external.5dac6994755d1651806f.png",
     "static/media/pinpoint.png": "/static/media/pinpoint.7f84e11bb8f83bcfd9d2.png",
     "index.html": "/index.html",
-    "main.eb0c708d.css.map": "/static/css/main.eb0c708d.css.map",
-    "main.da37662b.js.map": "/static/js/main.da37662b.js.map"
+    "main.f6a263a1.css.map": "/static/css/main.f6a263a1.css.map",
+    "main.c948555d.js.map": "/static/js/main.c948555d.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb0c708d.css",
-    "static/js/main.da37662b.js"
+    "static/css/main.f6a263a1.css",
+    "static/js/main.c948555d.js"
   ]
 }
