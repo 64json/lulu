@@ -5,7 +5,7 @@ import {moolah} from '../../data';
 export function MoolahWindow(props) {
   return (
     <AlbumWindow
-      message="Where it all began..!"
+      message="My most favorite hackathon experience :)"
       memories={moolah}
       toolbarStyle={{
         backgroundImage: 'linear-gradient(45deg, #FF7474, #AB83ED, #3ED1FF)',

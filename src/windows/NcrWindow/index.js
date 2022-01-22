@@ -5,7 +5,7 @@ import {ncr} from '../../data';
 export function NcrWindow(props) {
   return (
     <AlbumWindow
-      message="Where it all began..!"
+      message="Imposter ඞ"
       memories={ncr}
       toolbarStyle={{
         backgroundColor: 'rgb(84, 185, 72)',

@@ -1,10 +1,13 @@
 export const moolah = [{
-  image: require('./9_1 Gatherly.png'),
-  note: 'Strawberry Acai Venti',
+  image: require('./IMG_4094.JPG'),
+  note: 'NGL a masterpiece from Maya.',
 }, {
-  image: require('./gatherly-photobooth-0360 (1).png'),
-  note: 'Hello world',
+  image: require('./IMG_2003.JPG'),
+  note: 'The Gatherly film crew 👌',
 }, {
-  image: require('./IMG_3496.jpg'),
-  note: '42424242',
+  image: require('./IMG_2017.JPG'),
+  note: 'Submitted one minute before the deadline :)',
+}, {
+  image: require('./IMG_4184.JPG'),
+  note: 'Nobu celebrated the submission with us 💦',
 }];
