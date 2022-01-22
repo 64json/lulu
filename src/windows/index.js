@@ -6,3 +6,4 @@ export * from './NcrWindow';
 export * from './NycWindow';
 export * from './TokyoWindow';
 export * from './TerminalWindow';
+export * from './ProposalWindow';

@@ -3,8 +3,8 @@ import {File} from '.';
 export class AppFile extends File {
   static count = 0;
 
-  constructor(WindowComponent, {pinned = true, defaultUrl} = {}, key, parent) {
-    super(key, parent);
+  constructor(WindowComponent, {pinned = true, defaultUrl} = {}, name, parent) {
+    super(name, parent);
     AppFile.count++;
     Object.assign(this, {
       WindowComponent,
@@ -17,6 +17,13 @@ export class AppFile extends File {
       focused: false,
       zIndex: 1,
     });
+  }
+
+  get key() {
+    if (this.name === '❤️') {
+      return 'proposal';
+    }
+    return super.key;
   }
 
   get url() {

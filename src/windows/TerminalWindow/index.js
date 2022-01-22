@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Window} from '../../components';
 import {classes} from '../../common/utils';
@@ -17,7 +17,7 @@ fetch('https://raw.githubusercontent.com/64json/64json.github.io/b66992d893f311e
   .then(value => sourceCode = value)
   .catch(console.error);
 
-export function TerminalWindow(props) {
+export function TerminalWindow({initialCommand = '', ...props}) {
   const {onUpdate} = props;
   const mobile = useContext(ResponsiveContext);
   const [rootDir, refreshRootDir] = useContext(FileSystemContext);
@@ -25,22 +25,23 @@ export function TerminalWindow(props) {
 
   const [currentPathKeys, setCurrentPathKeys] = useState(['users', 'lulu-and-jinseo', 'desktop']);
 
-  const getPrompt = () => {
+  const getPrompt = useCallback(() => {
     const pathKeys = [...currentPathKeys];
     if (['users', 'lulu-and-jinseo'].every((v, i) => v === pathKeys[i])) {
       pathKeys.splice(0, 2, '~');
     }
     const path = pathKeys.join('/') || '/';
     return `lulu-and-jinseo@atlanta:${path}$ `;
-  };
+  }, [currentPathKeys]);
 
   const [inputHistory, setInputHistory] = useState([]);
   const [inputHistoryIndex, setInputHistoryIndex] = useState(0);
   const [tabPressed, setTabPressed] = useState(false);
   const [hackertyperLength, setHackertyperLength] = useState(null);
   const [text, setText] = useState('');
-  const [inputs, setInputs] = useState(['']);
+  const [inputs, setInputs] = useState(initialCommand.split());
   const [cursorIndex, setCursorIndex] = useState(0);
+  const [isProposal, setIsProposal] = useState(false);
   const isHackertyper = hackertyperLength !== null;
 
   const cursorRef = useRef(null);
@@ -51,11 +52,15 @@ export function TerminalWindow(props) {
     }
   }, [hackertyperLength, text, inputs]);
 
-  const flush = () => print('', {newLine: false});
-
-  const print = (append, {flush = true, resetInput = true, newLine = true, wordBreak = false} = {}) => {
+  const print = useCallback((append, {
+    flush = true,
+    prompt = true,
+    resetInput = true,
+    newLine = true,
+    wordBreak = false
+  } = {}) => {
     const newText = text +
-      (flush ? `${getPrompt()}${inputs.join('')}\n` : '') +
+      (flush ? `${prompt ? getPrompt() : ''}${inputs.join('')}\n` : '') +
       (wordBreak ? '<span class="word-break">' : '') +
       (Array.isArray(append) ? append.join('\n') : append)
         .replace(/{(.+)}/g, '<span class="underline">$1</span>&nbsp;&nbsp;')
@@ -67,9 +72,11 @@ export function TerminalWindow(props) {
       setInputs(['']);
       setCursorIndex(0);
     }
-  };
+  }, [getPrompt, inputs, text]);
 
-  const getPathKeys = path => {
+  const flush = useCallback(() => print('', {newLine: false}), [print]);
+
+  const getPathKeys = useCallback(path => {
     const tokens = path ? path.split('/') : [];
     let pathKeys = [...currentPathKeys];
     if (tokens[0] === '') {
@@ -93,9 +100,9 @@ export function TerminalWindow(props) {
       }
     }
     return pathKeys;
-  };
+  }, [currentPathKeys]);
 
-  const processCommand = input => {
+  const processCommand = useCallback(input => {
     const [command, ...args] = input.split(/\s+/);
     const pathArgs = args.filter(arg => !arg.startsWith('-')); // TODO: wildcard selector
     const optionArg = args.find(arg => arg.startsWith('-'));
@@ -215,11 +222,30 @@ export function TerminalWindow(props) {
         }
         break;
       }
+      case '❤️': {
+        print('*Lulu, would you be my girlfriend?* [Y/n] ', {newLine: false});
+        setIsProposal(true);
+        break;
+      }
       default: {
         print(`-bash: ${command}: command not found`);
       }
     }
-  };
+  }, [currentPathKeys, flush, getPathKeys, navigate, onUpdate, print, refreshRootDir, rootDir]);
+
+  const execute = useCallback(() => {
+    const input = inputs.join('');
+    const newInputHistory = [...inputHistory, input];
+    setInputHistory(newInputHistory);
+    setInputHistoryIndex(newInputHistory.length);
+    processCommand(input);
+  }, [inputHistory, inputs, processCommand]);
+
+  useEffect(() => {
+    if (initialCommand) {
+      execute();
+    }
+  }, []);
 
   return (
     <Window className="TerminalWindow"
@@ -231,7 +257,10 @@ export function TerminalWindow(props) {
               // TODO: support mobile
               const keyCode = e.charCode || e.keyCode;
               if (keyCode === 3) {
-                if (hackertyperLength === null) {
+                if (isProposal) {
+                  setIsProposal(false);
+                  print(inputs.join(''), {flush: false});
+                } else if (hackertyperLength === null) {
                   flush();
                 } else {
                   setHackertyperLength(null);
@@ -310,15 +339,48 @@ export function TerminalWindow(props) {
                   break;
                 }
                 case 13: {
-                  const input = inputs.join('');
-                  const newInputHistory = [...inputHistory, input];
-                  setInputHistory(newInputHistory);
-                  setInputHistoryIndex(newInputHistory.length);
-                  processCommand(input);
+                  if (isProposal) {
+                    const input = inputs.join('').trim().toLowerCase();
+                    if (input === 'y' || /^yes+$/.test(input)) {
+                      setIsProposal(false);
+                      print([
+                        '',
+                        '                      ░▒███████',
+                        '                     ░██▓▒░░▒▓██',
+                        '                     ██▓▒░  ░▒▓██   ██████',
+                        '                     ██▓▒░    ░▓███▓  ░▒▓██',
+                        '                     ██▓▒░   ░▓██▓     ░▒▓██',
+                        '                     ██▓▒░               ░▒▓██',
+                        '                      ██▓▒░              ░▒▓██',
+                        '                       ██▓▒░            ░▒▓██',
+                        '                        ██▓▒░          ░▒▓██',
+                        '                         ██▓▒░        ░▒▓██',
+                        '                          ██▓▒░     ░▒▓██',
+                        '                           ██▓▒░  ░▒▓██',
+                        '                            █▓▒░░▒▓██',
+                        '                             ░▒▓██',
+                        '                           ░▒▓██',
+                        '                         ░▒▓██',
+                        '',
+                      ], {prompt: false});
+                      rootDir.getDesktopDir().saidYes = true;
+                      refreshRootDir();
+                    } else {
+                      print([
+                        'Invalid response.',
+                        '*Lulu, would you be my girlfriend?* [Y/n] ',
+                      ], {prompt: false, newLine: false});
+                    }
+                  } else {
+                    execute();
+                  }
                   break;
                 }
                 case 27: {
-                  if (hackertyperLength === null) {
+                  if (isProposal) {
+                    setIsProposal(false);
+                    print(inputs.join(''), {flush: false});
+                  } else if (hackertyperLength === null) {
                     flush();
                   } else {
                     setHackertyperLength(null);
@@ -373,7 +435,7 @@ export function TerminalWindow(props) {
         ) : (
           <div className="line-container">
             <span dangerouslySetInnerHTML={{__html: text}}/>
-            {getPrompt()}
+            {!isProposal && getPrompt()}
             {
               inputs.map((input, i) => {
                 const isCursor = i === cursorIndex;

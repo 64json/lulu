@@ -1,12 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
-import {getAppKey} from '../../common/utils';
-import {FileSystemContext, ResponsiveContext} from '../../contexts';
+import {classes, getAppKey} from '../../common/utils';
+import {FileSystemContext} from '../../contexts';
 import {Icon, Link} from '..';
 import './stylesheet.scss';
 
 export function Desktop() {
-  const mobile = useContext(ResponsiveContext);
   const [rootDir, refreshRootDir] = useContext(FileSystemContext);
   const desktopDir = rootDir.getDesktopDir();
   const apps = rootDir.getApps();
@@ -15,7 +14,7 @@ export function Desktop() {
   const location = useLocation();
   const currentUrl = location.pathname;
 
-  const {wallpapers} = desktopDir;
+  const {wallpapers, saidYes} = desktopDir;
   const [wallpaperIndex, setWallpaperIndex] = useState(0);
   const wallpaper = wallpapers[wallpaperIndex];
   const previousWallpaper = wallpapers[(wallpaperIndex + wallpapers.length - 1) % wallpapers.length];
@@ -61,13 +60,13 @@ export function Desktop() {
   });
 
   return (
-    <div className="Desktop"
+    <div className={classes('Desktop', saidYes && 'hearts')}
          onMouseDown={() => {
            if (currentUrl !== '/') navigate('/');
          }}>
-      <div className="wallpaper" key={previousWallpaper}
+      <div className={classes('wallpaper', saidYes && 'color')} key={previousWallpaper}
            style={{backgroundImage: `url(${previousWallpaper})`}}/>
-      <div className="wallpaper fade-in" key={wallpaper}
+      <div className={classes('wallpaper', 'fade-in', saidYes && 'color')} key={wallpaper}
            style={{backgroundImage: `url(${wallpaper})`}}/>
       <div className="app-container">
         {
