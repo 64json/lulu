@@ -3,7 +3,6 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {getAppKey} from '../../common/utils';
 import {FileSystemContext, ResponsiveContext} from '../../contexts';
 import {Icon, Link} from '..';
-import {wallpapers} from '../../images/wallpapers';
 import './stylesheet.scss';
 
 export function Desktop() {
@@ -16,6 +15,7 @@ export function Desktop() {
   const location = useLocation();
   const currentUrl = location.pathname;
 
+  const {wallpapers} = desktopDir;
   const [wallpaperIndex, setWallpaperIndex] = useState(0);
   const wallpaper = wallpapers[wallpaperIndex];
   const previousWallpaper = wallpapers[(wallpaperIndex + wallpapers.length - 1) % wallpapers.length];

@@ -6,3 +6,4 @@ export {default as spotify} from './spotify.png';
 export {default as atlanta} from './atlanta.png';
 export {default as nyc} from './nyc.png';
 export {default as tokyo} from './tokyo.png';
+export {default as terminal} from './terminal.png';
