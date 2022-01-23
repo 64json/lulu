@@ -6,7 +6,7 @@ import nyc_bg from '../../images/nyc-bg.jpeg';
 export function NycWindow(props) {
   return (
     <AlbumWindow
-      message="Where it all began..!"
+      message="Our first trip outside of Atlanta :)"
       memories={nyc}
       toolbarStyle={{
         backgroundImage: `url(${nyc_bg})`,

@@ -1,10 +1,7 @@
 export const tokyo = [{
-  image: require('./9_1 Gatherly.png'),
-  note: 'Strawberry Acai Venti',
+  image: require('./IMG_4211.JPG'),
+  note: `I told the employee that I'd come back when I find my S/O so... 😉`,
 }, {
-  image: require('./gatherly-photobooth-0360 (1).png'),
-  note: 'Hello world',
-}, {
-  image: require('./IMG_3496.jpg'),
-  note: '42424242',
+  image: require('./20180617_145505.jpg'),
+  note: 'But looking forward to actually travelling to Tokyo soon hehe',
 }];

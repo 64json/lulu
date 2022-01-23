@@ -65,9 +65,9 @@ export function Desktop() {
            if (currentUrl !== '/') navigate('/');
          }}>
       <div className={classes('wallpaper', saidYes && 'color')} key={previousWallpaper}
-           style={{backgroundImage: `url(${previousWallpaper})`}}/>
+           style={{backgroundImage: `url('${previousWallpaper}')`}}/>
       <div className={classes('wallpaper', 'fade-in', saidYes && 'color')} key={wallpaper}
-           style={{backgroundImage: `url(${wallpaper})`}}/>
+           style={{backgroundImage: `url('${wallpaper}')`}}/>
       <div className="app-container">
         {
           desktopDir && desktopDir.children.map(child => (

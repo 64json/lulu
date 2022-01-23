@@ -6,7 +6,7 @@ import tokyo_bg from '../../images/tokyo-bg.png';
 export function TokyoWindow(props) {
   return (
     <AlbumWindow
-      message="Where it all began..!"
+      message="Tokyo (Valentino) 💦"
       memories={tokyo}
       toolbarStyle={{
         backgroundImage: `url(${tokyo_bg})`,

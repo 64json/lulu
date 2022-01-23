@@ -3,14 +3,13 @@ import {
   AtlantaWindow,
   FinderWindow,
   GatherlyWindow,
-  HeheWindow,
   MoolahWindow,
   NcrWindow,
-  NycWindow, ProposalWindow,
-  TerminalWindow,
+  NycWindow,
+  ProposalWindow,
   TokyoWindow
 } from '../windows';
-import {wallpapers} from '../images/wallpapers';
+import {wallpapers} from '../data';
 
 export class RootDir extends SystemDir {
   constructor(children) {

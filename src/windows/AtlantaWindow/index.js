@@ -6,7 +6,7 @@ import atlanta_bg from '../../images/atlanta-bg.jpeg';
 export function AtlantaWindow(props) {
   return (
     <AlbumWindow
-      message="Where it all began..!"
+      message="I thought ATL was boring until hanging out with Lulu!"
       memories={atlanta}
       toolbarStyle={{
         backgroundImage: `url(${atlanta_bg})`,

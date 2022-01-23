@@ -1,10 +1,10 @@
 export const nyc = [{
-  image: require('./9_1 Gatherly.png'),
-  note: 'Strawberry Acai Venti',
+  image: require('./IMG_3460.JPG'),
+  note: 'Coffee commercial vibe ☕️',
 }, {
-  image: require('./gatherly-photobooth-0360 (1).png'),
-  note: 'Hello world',
+  image: require('./IMG_3477.jpg'),
+  note: 'The best and worst drunk ferry ride!',
 }, {
-  image: require('./IMG_3496.jpg'),
-  note: '42424242',
+  image: require('./IMG_5009.jpg'),
+  note: `I shouldn't have stuck my ass out aiyaa`,
 }];

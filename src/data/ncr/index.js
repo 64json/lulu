@@ -1,4 +1,7 @@
 export const ncr = [{
+  image: require('./IMG_4281.JPG'),
+  note: 'Thanks Lulu, Womas, and Aleks for the smooth onboarding experience.',
+}, {
   image: require('./IMG_2353.jpg'),
   note: 'Googler wearing Gatherly in NCR 👀',
 }, {

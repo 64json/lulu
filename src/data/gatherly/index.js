@@ -2,6 +2,9 @@ export const gatherly = [{
   image: require('./Screen Shot 2021-04-01 at 5.49.51 PM.png'),
   note: 'Loved our spontaneous drawing collab session!'
 }, {
+  image: require('./IMG_3263.JPG'),
+  note: 'Quitting Gatherly around the same time made us friends heh',
+}, {
   image: require('./gatherly-photobooth-0360 (1).png'),
   note: 'I have so much love for Gatherly, and Lulu on Gatherly? I die.',
 }, {

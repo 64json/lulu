@@ -2,8 +2,11 @@ export const moolah = [{
   image: require('./IMG_4094.JPG'),
   note: 'NGL a masterpiece from Maya.',
 }, {
+  image: require('./IMG_1993.JPG'),
+  note: '❤️',
+}, {
   image: require('./IMG_2003.JPG'),
-  note: 'The Gatherly film crew 👌',
+  note: 'The Moolah film crew 👌',
 }, {
   image: require('./IMG_2017.JPG'),
   note: 'Submitted one minute before the deadline :)',
