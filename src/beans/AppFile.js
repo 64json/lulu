@@ -20,10 +20,14 @@ export class AppFile extends File {
   }
 
   get key() {
-    if (this.name === '❤️') {
-      return 'proposal';
+    switch (this.name) {
+      case '❤️':
+        return 'proposal';
+      case 'Year 0':
+        return 'year0';
+      default:
+        return super.key;
     }
-    return super.key;
   }
 
   get url() {

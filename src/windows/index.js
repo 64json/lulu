@@ -7,3 +7,4 @@ export * from './NycWindow';
 export * from './TokyoWindow';
 export * from './TerminalWindow';
 export * from './ProposalWindow';
+export * from './Year0Window';

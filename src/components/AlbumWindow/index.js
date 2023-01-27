@@ -4,8 +4,10 @@ import './stylesheet.scss';
 
 export function AlbumWindow({message, memories, ...props}) {
   return (
-    <Window className="AlbumWindow" noToolbar
-            defaultWidth={50 * 16} defaultHeight={50 * 16}
+    <Window className="AlbumWindow"
+            noToolbar
+            defaultWidth={50 * 16}
+            defaultHeight={50 * 16}
             contentStyle={{
               pointerEvents: 'auto',
               overflowY: 'auto',
@@ -18,10 +20,16 @@ export function AlbumWindow({message, memories, ...props}) {
       <div className="memory-container">
         {
           memories.map(memory => (
-            <div key={memory.image} className="memory">
-              <img className="image" src={memory.image} alt={memory.note}/>
+            <a key={memory.image}
+               className="memory"
+               href={memory.link}
+               target="_blank"
+               rel="noopener noreferrer">
+              <img className="image"
+                   src={memory.image}
+                   alt={memory.note} />
               <div className="note">{memory.note}</div>
-            </div>
+            </a>
           ))
         }
       </div>

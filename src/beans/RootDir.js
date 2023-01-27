@@ -3,6 +3,7 @@ import {
   AtlantaWindow,
   FinderWindow,
   GatherlyWindow,
+  Year0Window,
   MoolahWindow,
   NcrWindow,
   NycWindow,
@@ -56,6 +57,7 @@ export class RootDir extends SystemDir {
     const nyc = new AppFile(NycWindow);
     const tokyo = new AppFile(TokyoWindow);
     const proposal = new AppFile(ProposalWindow);
+    const year0 = new AppFile(Year0Window);
 
     this.rootDir = new RootDir({
       users: new SystemDir({
@@ -69,6 +71,7 @@ export class RootDir extends SystemDir {
             NYC: nyc,
             Tokyo: tokyo,
             '❤️': proposal,
+            'Year 0': year0,
           }),
           desktop: new DesktopDir(wallpapers, {
             Spotify: new LinkFile('https://open.spotify.com/playlist/37i9dQZF1EJDpt91mXLGX6'),
@@ -79,6 +82,7 @@ export class RootDir extends SystemDir {
             NYC: new SymlinkFile(nyc),
             Tokyo: new SymlinkFile(tokyo),
             '❤️': new SymlinkFile(proposal),
+            'Year 0': new SymlinkFile(year0),
           }),
         }),
       }),
